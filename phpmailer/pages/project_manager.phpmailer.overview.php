@@ -174,6 +174,34 @@ if ($showlist) {
     }
   });
 
+  $list->addColumn($this->i18n('logging'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-logging">###VALUE###</td>']);
+  $list->setColumnLabel($this->i18n('logging'), $this->i18n('logging'));
+  $list->setColumnFormat($this->i18n('logging'), 'custom', function ($params) {
+      if($params['list']->getValue('raw')) {
+          $raw= json_decode($params['list']->getValue('raw'), true);
+          if (array_key_exists("phpmailer_config", $raw)) {
+              $config = $raw['phpmailer_config'];
+
+              if (isset($config['logging'])) {
+                  if ($config['logging'] == "1") {
+                      $return = '<span>'.$this->i18n('log_errors').'</span>';
+                  } else if ($config['logging'] == "0") {
+                      $return = '<span>'.$this->i18n('no').'</span> <span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+                  } else if ($config['logging'] == "2") {
+                      $return = '<span>'.$this->i18n('log_all').'</span>';
+                  }
+                  return $return;
+              }
+              else {
+                  return '-';
+              }
+
+          } else {
+              return '-';
+          }
+      }
+  });
+
   $list->addColumn($this->i18n('maillog'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-maillog">###VALUE###</td>']);
   $list->setColumnLabel($this->i18n('maillog'), $this->i18n('maillog'));
   $list->setColumnFormat($this->i18n('maillog'), 'custom', function ($params) {
@@ -181,7 +209,7 @@ if ($showlist) {
         $raw= json_decode($params['list']->getValue('raw'), true);
         if (array_key_exists("maillog", $raw)) {
             $maillog = $raw['maillog'];
-            return count($maillog).' '.$this->i18n('maillog_error');
+            return count($maillog).' '.$this->i18n('maillog_error').' <span class="rex-icon fa-exclamation-triangle text-danger"></span>';
         } else {
             return '-';
         }

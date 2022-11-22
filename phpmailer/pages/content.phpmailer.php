@@ -39,7 +39,7 @@ if($domain) {
       $output .= '</tbody></table>';
 
         if (array_key_exists("phpmailer_config", $raw)) {
-            $output .= '<table class="table table-striped"><thead><tr><th>'.$this->i18n('mailer').'</th><th>'.$this->i18n('detour_mode').'</th><th>'.$this->i18n('from').'</th><th>'.$this->i18n('host').'</th><th>'.$this->i18n('username').'</th></tr></thead><tbody>';
+            $output .= '<table class="table table-striped"><thead><tr><th>'.$this->i18n('mailer').'</th><th>'.$this->i18n('detour_mode').'</th><th>'.$this->i18n('logging').'</th><th>'.$this->i18n('from').'</th><th>'.$this->i18n('host').'</th><th>'.$this->i18n('username').'</th></tr></thead><tbody>';
             $config = $raw['phpmailer_config'];
             $output .= '<tr>';
             $output .= '<td>';
@@ -55,6 +55,18 @@ if($domain) {
                     $output .= '<span>'.$this->i18n('yes').'</span> <span class="rex-icon fa-exclamation-triangle text-danger"></span>';
                 } else if ($config['detour_mode'] == "0") {
                     $output .= '<span>'.$this->i18n('no').'</span> <span class="rex-icon fa-check text-success"></span>';
+                }
+            }
+            $output .= '</td>';
+
+            $output .= '<td>';
+            if (isset($config['logging'])) {
+                if ($config['logging'] == "1") {
+                    $output .= '<span>'.$this->i18n('log_errors').'</span>';
+                } else if ($config['logging'] == "0") {
+                    $output .= '<span>'.$this->i18n('no').'</span> <span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+                } else if ($config['logging'] == "2") {
+                    $output .= '<span>'.$this->i18n('log_all').'</span>';
                 }
             }
             $output .= '</td>';
