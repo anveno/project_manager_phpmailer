@@ -1,0 +1,8 @@
+package: project_manager/client_phpmailer
+version: '1.0.0'
+author: 'Friends Of REDAXO'
+supportpage: https://github.com/FriendsOfREDAXO/project_manager
+
+requires:
+    packages:
+        project_manager: '^1.2.0'            

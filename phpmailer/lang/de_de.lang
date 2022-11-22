@@ -1,0 +1,24 @@
+project_manager_phpmailer_menu_entry = PHPMailer
+
+project_manager_phpmailer_projects = Projekte
+project_manager_phpmailer_title = Übersicht
+project_manager_phpmailer_domain_norows_message = Kein Projekt vorhanden 
+project_manager_cronjob_phpmailer_name = Projekt Manager: Hole PHPMailer Daten
+
+project_manager_phpmailer_name = Projektname
+project_manager_phpmailer_domain = Domain
+project_manager_phpmailer_createdate = Letzte Änderung
+project_manager_phpmailer_phpmailer_version = Version
+project_manager_phpmailer_maillog = Maillog
+project_manager_phpmailer_maillog_from = Von
+project_manager_phpmailer_maillog_to = An
+project_manager_phpmailer_maillog_subject = Betreff
+project_manager_phpmailer_maillog_error = Fehler
+project_manager_phpmailer_timestamp = Datum
+project_manager_phpmailer_mailer = Mailer-Typ
+project_manager_phpmailer_detour_mode = Umleitung aktiv
+project_manager_phpmailer_from = Absenderadresse
+project_manager_phpmailer_username = Benutzername
+project_manager_phpmailer_domain_norows_message = Keine Einträge vorhanden
+
+perm_general_project_manager_phpmailer[] = project_manager_phpmailer[] - Rechte für Projekt Manager PHPMailer

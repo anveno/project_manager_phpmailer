@@ -1,0 +1,14 @@
+
+
+client_phpmailer_navigation_title = Navigation [ main_navi.md ]
+client_phpmailer_content_title = Inhalt [ <span id="doc-file-name">{0}</span> ]
+
+client_phpmailer_noparser = Kein Markdown-Parser vorhanden! Bitte zuerst einen Parser installieren (Addon markitup oder textile)
+
+client_phpmailer_navinotfound = Navigations-Datei <strong>{0}</strong> wurde nicht gefunden!<br>Diese Datei ist zwingend erforderlich!
+client_phpmailer_filenotfound = Datei <strong>{0}</strong> wurde nicht gefunden. Inhalt existiert (noch) nicht. <br><br>Wir freuen uns über Mithilfe: <a href="{1}" target="_blank">{1}</a>
+
+project_manager_client_phpmailer_menu_entry = Client
+
+
+perm_general_project_manager_client_phpmailer[] = project_manager_client_phpmailer[] - Rechte für Projekt Manager Client PHPMailer

@@ -1,0 +1,19 @@
+package: project_manager/phpmailer
+version: '1.0.0'
+author: 'Friends Of REDAXO'
+supportpage: https://github.com/FriendsOfREDAXO/project_manager
+
+page:
+    title: 'translate:phpmailer_menu_entry'
+    icon: rex-icon rex-icon-envelope # Icon von Font Awesome
+    perm: project_manager_phpmailer[]
+    
+pages:
+    project_manager/phpmailer/overview:
+        title: translate:project_manager_phpmailer_title
+        
+requires:
+    packages:
+        project_manager: '^1.2.0'
+        cronjob: '>=2.3.0'
+        project_manager/server: '>=1.3.8'        
