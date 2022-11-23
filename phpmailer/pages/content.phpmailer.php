@@ -19,24 +19,25 @@ if($domain) {
   
     if(is_array($raw)) {
 
-      $output = '<table class="table table-striped"><thead><tr><th>'.$this->i18n('phpmailer_version').'</th><th>'.$this->i18n('status').'</th></tr></thead><tbody>';
-      $output .= '<tr>';
-      $output .= '<td>'.(isset($raw['phpmailer_version']) ? $raw['phpmailer_version'] : '').'</td>';
-      $output .= '<td>';
-        if (isset($raw['status'])) {
-            if ($raw['status'] == "1") {
-                $output .= '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
-            } else if ($raw['status'] == "0") {
-                $output .= '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
-            } else if ($raw['status'] == "-1") {
-                $output .= '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
-            } else if ($raw['status'] == "2") {
-                $output .= '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
+        $output = '<table class="table table-striped"><thead><tr><th>'.$this->i18n('phpmailer_version').'</th><th>'.$this->i18n('status').'</th><th>'.$this->i18n('plugin_version').'</th></tr></thead><tbody>';
+        $output .= '<tr>';
+        $output .= '<td>'.(isset($raw['phpmailer_version']) ? $raw['phpmailer_version'] : '').'</td>';
+        $output .= '<td>';
+            if (isset($raw['status'])) {
+                if ($raw['status'] == "1") {
+                    $output .= '<span class="hidden">1</span><span class="rex-icon fa-check text-success"></span>';
+                } else if ($raw['status'] == "0") {
+                    $output .= '<span class="hidden">2</span><span class="rex-icon fa-question text-warning"></span>';
+                } else if ($raw['status'] == "-1") {
+                    $output .= '<span class="hidden">3</span><span class="rex-icon fa-exclamation-triangle text-danger"></span>';
+                } else if ($raw['status'] == "2") {
+                    $output .= '<span class="hidden">3</span><span class="rex-icon fa-arrow-right text-danger"></span>';
+                }
             }
-        }
-      $output .= '</td>';
-      $output .= '</tr>';
-      $output .= '</tbody></table>';
+        $output .= '</td>';
+        $output .= '<td>'.(isset($raw['plugin_version']) ? $raw['plugin_version'] : '').'</td>';
+        $output .= '</tr>';
+        $output .= '</tbody></table>';
 
         if (array_key_exists("phpmailer_config", $raw)) {
             $output .= '<table class="table table-striped"><thead><tr><th>'.$this->i18n('mailer').'</th><th>'.$this->i18n('detour_mode').'</th><th>'.$this->i18n('logging').'</th><th>'.$this->i18n('from').'</th><th>'.$this->i18n('host').'</th><th>'.$this->i18n('username').'</th></tr></thead><tbody>';

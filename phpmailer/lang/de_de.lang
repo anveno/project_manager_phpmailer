@@ -23,5 +23,7 @@ project_manager_phpmailer_logging = E-Mail-Log
 project_manager_phpmailer_log_errors = Nur Fehler loggen
 project_manager_phpmailer_log_all = Alle Vorgänge loggen
 project_manager_phpmailer_domain_norows_message = Keine Einträge vorhanden
+project_manager_phpmailer_testmail = Testen
+project_manager_phpmailer_plugin_version = Client Plugin Version
 
 perm_general_project_manager_phpmailer[] = project_manager_phpmailer[] - Rechte für Projekt Manager PHPMailer

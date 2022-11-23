@@ -37,11 +37,10 @@ if ($showlist) {
     $refresh = '<a href="/redaxo/index.php?page=project_manager/phpmailer/overview#" data-cronjob="/redaxo/index.php?page=cronjob/cronjobs&func=execute&oid='.$cronjobId.'&_csrf_token='.$csrf_token.'" target="_blank" class="pull-right callCronjob"><i class="fa fa-refresh"></i> PHPMailer Daten aktualisieren</a>';
   }
   echo rex_view::info("Anzahl der Domains und Projekte: ".count($items) . $refresh);
-  
+
   $list = rex_list::factory($sql, 1000);
   $list->addTableAttribute('class', 'table-striped');
   $list->setNoRowsMessage($this->i18n('project_manager_phpmailer_domain_norows_message'));
-
   
   $list->setColumnFormat('id', 'Id');
   $list->addParam('page', 'project_manager/server');
@@ -86,16 +85,16 @@ if ($showlist) {
       $filename = '';
       if (file_exists(rex_plugin::get('project_manager', 'server')->getAssetsPath('favicon/'.$params['list']->getValue('domain').'.png'))) {
         $filename = rex_plugin::get('project_manager', 'server')->getAssetsUrl('favicon/'.$params['list']->getValue('domain').'.png');
-        return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" width="16" /></a>';
+        return '<a href="https://'.$params['list']->getValue('domain').'/" target="_blank"><img src="'.$filename.'" width="16" /></a>';
       } else {
-        return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank"><i class="fa fa-sitemap"></i></a>';
+        return '<a href="https://'.$params['list']->getValue('domain').'/" target="_blank"><i class="fa fa-sitemap"></i></a>';
       }
   });
     
   $list->addColumn($this->i18n('project_manager_phpmailer_domain'), '###domain###', 3);
   //$list->setColumnParams($this->i18n('project_manager_phpmailer_domain'), ['page' => 'project_manager/server/projects', 'func' => 'updateinfos', 'domain' => '###domain###']);
   $list->setColumnFormat($this->i18n('project_manager_phpmailer_domain'), 'custom', function ($params) {
-    return '<a href="http://'.$params['list']->getValue('domain').'/" target="_blank">'.$params['list']->getValue('domain').'</a>';
+    return '<a href="https://'.$params['list']->getValue('domain').'/" target="_blank">'.$params['list']->getValue('domain').'</a>';
   });
 
   $list->setColumnLabel('status_phpmailer', $this->i18n('status'));
@@ -214,6 +213,18 @@ if ($showlist) {
             return '-';
         }
       }
+  });
+
+  $list->addColumn($this->i18n('testmail'), false, -1, ['<th>###VALUE###</th>', '<td class="rex-table-testmail">###VALUE###</td>']);
+  $list->setColumnLabel($this->i18n('testmail'), $this->i18n('testmail'));
+  $list->setColumnFormat($this->i18n('testmail'), 'custom', function ($params) {
+      $testmail = '-';
+      if ($params['list']->getValue('status_phpmailer') == "1") {
+          $timestamp = time();
+          $ajaxcall = "/index.php?rex-api-call=project_manager_phpmailer&func=testmail&api_key=" . $params['list']->getValue('api_key') . '&t=' . $timestamp;
+          $testmail = '<a href="https://' . $params['list']->getValue('domain') . $ajaxcall . '" target="_blank" class=""><span class="rex-icon rex-icon-envelope"></span>';
+      }
+      return $testmail;
   });
   
   $content = $list->get();
